@@ -24,9 +24,13 @@
 
         <h2>Hello Below Root</h2>
 
+        <!-- 1) first way to put react on your code is CDN not appropriated way
+             2) second way is installing using npm npm install react and npm install react-dom
+                so Removing CDN link as we are installing react from node
+                in Episode 01 we have code using CDN for reference
         <script crossorigin="crossorigin" src="https://unpkg.com/react@18/umd/react.development.js"></script>
-        <script crossorigin="crossorigin" src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script crossorigin="crossorigin" src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script> -->
 
-        <script src="./App.js"></script>
+        <script type="module" src="./App.js"></script>
     </body>
 </html>

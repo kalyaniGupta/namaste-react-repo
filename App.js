@@ -1,3 +1,5 @@
+import React from "react";
+import ReactDOM from "react-dom/client"
 
 // simple react code for rendering h1 tag inside div tag
 const heading = React.createElement("h1", {
