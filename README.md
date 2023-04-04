@@ -19,5 +19,25 @@
 - Tree Shaking - Remove unused code
 - Different prod and dev build
 
+# Namsate Food
 
+/** List of components
+ * Header
+ *  -- Logo
+ *  -- Nav Items
+ * Body
+ *  -- Search
+ *  -- RestourantContainer
+ *      --RestourantCard
+ * Footer
+ *  -- CopyRight
+ *  -- Links
+ *  -- Address
+ *  -- Contacts
+ */
 
+# CSS 
+// way of wrting inline css creating objectand give that object to style={}
+// const styleCard = {
+//   backgroundColor: "yellow"
+// };

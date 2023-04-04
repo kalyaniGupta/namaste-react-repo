@@ -35,7 +35,8 @@ h2{
 .res-card {
     margin: 5px;
     padding: 5px;
-    width: 200px;
+    width: 250px;
+    word-wrap: break-word;
 }
 
 .res-card:hover{
