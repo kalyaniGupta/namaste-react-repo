@@ -1,15 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import { LOGO_URL } from "../utils/constants";
 
 const Header = () => {
   return (
     <div className="header">
       <div className="logo-container">
-        <img
-          className="logo"
-          src="https://www.logodesign.net/logo/smoking-burger-with-lettuce-3624ld.png"
-          alt="food-app-logo"
-        />
+        <img className="logo" src={LOGO_URL} alt="food-app-logo" />
       </div>
       <div className="nav-items">
         <ul>

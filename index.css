@@ -35,7 +35,7 @@ h2{
 .res-card {
     margin: 5px;
     padding: 5px;
-    width: 250px;
+    width: 210px;
     word-wrap: break-word;
 }
 
@@ -56,4 +56,9 @@ h2{
     margin: 10px;
     border: 1px solid black;
     height: 50px;
+}
+
+.filter-btn{
+    cursor: pointer;
+    margin: 10px;
 }
