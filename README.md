@@ -41,3 +41,19 @@
 // const styleCard = {
 //   backgroundColor: "yellow"
 // };
+
+
+# Episode-05
+
+# useState
+#  //Local state variable - super powerful variable
+  const [listOfResturant, setListOfRestaurant] = useState(resList); // this is array destructuring
+
+  // below line of code are correct above line can be written like below
+  -  const arr = useState(resList);
+  -  const listOfResturant = arr[0];
+  -  const setListOfRestaurant = arr[1];
+
+  # //Normal JS variable
+  let list = []; //creating
+  list.push("abc"); //way of updating
