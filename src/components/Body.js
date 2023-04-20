@@ -7,8 +7,11 @@ import { swiggy_api_URL } from "../utils/constants";
 
 function filterData(searchInput, list) {
   if (searchInput != "") {
-    let result = list.filter((item) => item.data.name.includes(searchInput));
-    console.log(result)
+    //good practice to put optional chaining so that you wont get somthing undefined error
+    let result = list.filter((item) =>
+      item?.data?.name?.toLowerCase().includes(searchInput.toLowerCase())
+    );
+    console.log(result);
     return result;
   } else {
     return list;
@@ -49,7 +52,7 @@ const Body = () => {
     setSearchText(e.target.value);
 
     if (e.target.value == "") {
-    //  setListOfRestaurant(resList);
+      //  setListOfRestaurant(resList);
     }
   }
 
