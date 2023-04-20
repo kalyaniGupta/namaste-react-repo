@@ -1,22 +1,9 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"; /* Import using Named Import */
 
 import RestaurantCard from "./RestaurantCard";
-import resList from "../utils/mockData";
+import Shimmer from "./Shimmer";
 import { swiggy_api_URL } from "../utils/constants";
-
-function filterData(searchInput, list) {
-  if (searchInput != "") {
-    //good practice to put optional chaining so that you wont get somthing undefined error
-    let result = list.filter((item) =>
-      item?.data?.name?.toLowerCase().includes(searchInput.toLowerCase())
-    );
-    console.log(result);
-    return result;
-  } else {
-    return list;
-  }
-}
 
 const Body = () => {
   //Please do read README file for episode-05
@@ -30,20 +17,47 @@ const Body = () => {
   // episode 6 live-course changes for filtered list, shimmer, and early return
   const [filteredResturant, setFilteredRestaurant] = useState([]);
 
+  const [errorMsg, setErrorMsg] = useState("");
+
   useEffect(() => {
     console.log("useEffect");
     getRestaurantList();
   }, []);
 
   async function getRestaurantList() {
-    const data = await fetch(swiggy_api_URL);
-    const json = await data.json();
-    let tempData = json?.data?.cards[2]?.data?.data?.cards;
+    try {
+      const data = await fetch(swiggy_api_URL);
+      const json = await data.json();
+      let tempData = json?.data?.cards[2]?.data?.data?.cards;
 
-    console.log(tempData);
+      console.log(tempData);
 
-    setAllRestaurant(tempData);
-    setFilteredRestaurant(tempData);
+      setAllRestaurant(tempData);
+      setFilteredRestaurant(tempData);
+      setErrorMsg("");
+    } catch (error) {
+      console.log("error", error);
+      setErrorMsg(error);
+    }
+  }
+
+  function filterData(searchInput, list) {
+    if (searchInput != "") {
+      //good practice to put optional chaining so that you wont get somthing undefined error
+      let filteredResult = list.filter((item) =>
+        item?.data?.name?.toLowerCase().includes(searchInput.toLowerCase())
+      );
+      console.log(filteredResult);
+      setErrorMsg("");
+
+      if (filteredResult?.length == 0) {
+        setErrorMsg("No matches found");
+      }
+      return filteredResult;
+    } else {
+      setErrorMsg("");
+      return list;
+    }
   }
 
   console.log("render");
@@ -54,6 +68,12 @@ const Body = () => {
     if (e.target.value == "") {
       //  setListOfRestaurant(resList);
     }
+  }
+
+  // if allRestaurants is empty don't render restaurants cards
+  if (!allResturant) {
+    //Early Return
+    return null;
   }
 
   return (
@@ -92,11 +112,20 @@ const Body = () => {
           Search
         </button>
       </div>
-      <div className="res-container">
-        {filteredResturant.map((restaurant) => (
-          <RestaurantCard resData={restaurant} key={restaurant.data.id} />
-        ))}
-      </div>
+      {/* 1st way {errorMsg ? <div>{errorMsg}</div> : ""} */}
+      {/* 2nd way */}
+      {errorMsg && <div>{errorMsg}</div>}
+
+      {/* if restaurants data is not fetched then display Shimmer UI after the fetched data display restaurants cards */}
+      {allResturant?.length === 0 ? (
+        <Shimmer />
+      ) : (
+        <div className="res-container">
+          {filteredResturant.map((restaurant) => (
+            <RestaurantCard resData={restaurant} key={restaurant.data.id} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
