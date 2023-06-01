@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { LOGO_URL } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 const loggedInUser = () => {
+  //API call to check authentication
   return false;
 };
 
@@ -11,14 +13,24 @@ const Header = () => {
   return (
     <div className="header">
       <div className="logo-container">
-        <img className="logo" src={LOGO_URL} alt="food-app-logo" />
+        <a href="/">
+          <img className="logo" src={LOGO_URL} alt="food-app-logo" />
+        </a>
       </div>
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
-          <li>Cart</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About Us</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact Us</Link>
+          </li>
+          <li>
+            <Link to="/cart">Cart</Link>
+          </li>
         </ul>
       </div>
       {isLoggedIn ? (
@@ -29,6 +41,5 @@ const Header = () => {
     </div>
   );
 };
-
 
 export default Header;

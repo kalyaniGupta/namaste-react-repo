@@ -1,9 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react"; /* Import using Named Import */
+import { Link } from "react-router-dom";
 
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-import { swiggy_api_URL } from "../utils/constants";
+import { SWIGGY_API_URL } from "../utils/constants";
 
 const Body = () => {
   //Please do read README file for episode-05
@@ -26,7 +27,7 @@ const Body = () => {
 
   async function getRestaurantList() {
     try {
-      const data = await fetch(swiggy_api_URL);
+      const data = await fetch(SWIGGY_API_URL);
       const json = await data.json();
       let tempData = json?.data?.cards[2]?.data?.data?.cards;
 
@@ -122,7 +123,12 @@ const Body = () => {
       ) : (
         <div className="res-container">
           {filteredResturant.map((restaurant) => (
-            <RestaurantCard resData={restaurant} key={restaurant.data.id} />
+            <Link
+              to={"/restaurant/" + restaurant.data.id}
+              key={restaurant.data.id}
+            >
+              <RestaurantCard resData={restaurant} key={restaurant.data.id} />
+            </Link>
           ))}
         </div>
       )}
