@@ -63,11 +63,14 @@
 
   - useEffect
   - useState indepth
+  - early return
   - reconciliation
   - react fiber
   - diff algorithm
   - login/logout toggling
-  - search functionlity
+  - search functionlity 
+  - input tag and useState
   
+
 
 
