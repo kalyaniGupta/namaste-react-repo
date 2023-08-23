@@ -43,7 +43,7 @@
 // };
 
 
-# Episode-05
+# Episode-05 let's get hooked
 
 # useState
 #  //Local state variable - super powerful variable
@@ -58,8 +58,7 @@
   let list = []; //creating
   list.push("abc"); //way of updating
 
-
-  # Episode -06
+  # Episode -06 Exploring the World  23/08/2023
 
   - useEffect
   - useState indepth
@@ -70,7 +69,8 @@
   - login/logout toggling
   - search functionlity 
   - input tag and useState
-  
+
+# Episode-07 Finding the path 23/08/2023
 
 
 
