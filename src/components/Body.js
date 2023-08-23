@@ -1,22 +1,10 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import RestaurantCard from "./RestaurantCard";
-import resList from "../utils/mockData";
-import { swiggy_api_URL } from "../utils/constants";
+//import resList from "../utils/mockData";
+import { SWIGGY_API_URL } from "../utils/constants";
+import Shimmer from "./Shimmer";
 
-function filterData(searchInput, list) {
-  if (searchInput != "") {
-    //good practice to put optional chaining so that you wont get somthing undefined error
-    let result = list.filter((item) =>
-      item?.data?.name?.toLowerCase().includes(searchInput.toLowerCase())
-    );
-    console.log(result);
-    return result;
-  } else {
-    return list;
-  }
-}
 
 const Body = () => {
   //Please do read README file for episode-05
@@ -36,34 +24,41 @@ const Body = () => {
   }, []);
 
   async function getRestaurantList() {
-    const data = await fetch(swiggy_api_URL);
+    const data = await fetch(SWIGGY_API_URL);
     const json = await data.json();
-    let tempData = json?.data?.cards[2]?.data?.data?.cards;
 
-    console.log(tempData);
+    let response = json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
 
-    setAllRestaurant(tempData);
-    setFilteredRestaurant(tempData);
+    console.log(response);
+
+    setAllRestaurant(response);
+    setFilteredRestaurant(response);
   }
+
+  //conditional rendering interview question
+  // if(allResturant.length === 0){
+  //   return <Shimmer></Shimmer>
+  // }
 
   console.log("render");
 
   function onChangeOfInput(e) {
     setSearchText(e.target.value);
+    console.log("e.target.value", e.target.value)
 
     if (e.target.value == "") {
-      //  setListOfRestaurant(resList);
+      setFilteredRestaurant(allResturant);
     }
   }
 
-  return (
+  return allResturant?.length === 0 ? <Shimmer/> : (
     <div className="body">
       <div className="filter">
         <button
           className="filter-btn"
           onClick={() => {
             const filteredList = allResturant.filter(
-              (res) => res.data.avgRating > 4
+              (res) => res.info.avgRating > 4
             );
             // way of updating state variable
             setFilteredRestaurant(filteredList);
@@ -72,6 +67,7 @@ const Body = () => {
           Top Rated Restaurants
         </button>
       </div>
+      {/* Search Functionality */}
       <div className="search-container">
         <input
           type="text"
@@ -83,18 +79,23 @@ const Body = () => {
         <button
           className="search-btn"
           onClick={() => {
-            // need to filter the data
-            const resultData = filterData(searchText, allResturant);
-            // update the state ---> restaurant list
-            setFilteredRestaurant(resultData);
+             // Filter the restraunt cards and update the UI
+              // searchText
+              console.log(searchText);
+              const searchResult = allResturant.filter((res) =>
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+              );
+
+              setFilteredRestaurant(searchResult);
           }}
         >
           Search
         </button>
       </div>
+
       <div className="res-container">
-        {filteredResturant.map((restaurant) => (
-          <RestaurantCard resData={restaurant} key={restaurant.data.id} />
+        {filteredResturant?.map((restaurant) => (
+          <RestaurantCard resData={restaurant} key={restaurant.info.id} />
         ))}
       </div>
     </div>

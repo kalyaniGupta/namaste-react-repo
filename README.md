@@ -57,3 +57,17 @@
   # //Normal JS variable
   let list = []; //creating
   list.push("abc"); //way of updating
+
+
+  # Episode -06
+
+  - useEffect
+  - useState indepth
+  - reconciliation
+  - react fiber
+  - diff algorithm
+  - login/logout toggling
+  - search functionlity
+  
+
+
