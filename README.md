@@ -74,18 +74,25 @@
  - useEffect with dependency array behaviour
  - useState dos and donts
  - react router dom npm i react-router-dom
+ - import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
  - routing configuration crearteBrowserRouter
+ - RouterProvider
  - errorElement
  - useRouterError() hook
  - children route
  - will solve the problem: when i go to about us page or contact us page I am loosing my
     header and footer 
  - header and footer will be same just internal page will change
- - outlet
- - link the page with header tab on click of about tab have about page, contact tab have contact page
+ - Outlet
+ - link the page with header tab on click of about tab have about page, 
+    contact tab have contact page
  - anchor tag vs react Link component
  - two types of routing in web application: cleint side routing and server side routing
  - difference between client side vs server side
  - SPA - React is a single page application
+ - create a new feature in our application : when I will click on any restaurant it will
+    take me to that restaurant page 
+ - dynamic routing
+ - useParams() hook
 
 
