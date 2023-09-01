@@ -1,5 +1,6 @@
 # Namaste React Print each section summary
 
+# Episode-02: Igniting our app: will learn about the parcel
 # parcel
 - Dev Build
 - Local Server
@@ -132,4 +133,37 @@
       - how to destroy setInterval in fucntional based component
       - returning function from useEffect() hook to clear the setInterval and this function will execute at the time of component unmount
       - Async in useEffect
+
+# Episode-09 Optimising our app 01/09/2023 : will learn about custom hook and lazy loading 
+- in this episode will see
+   - how we can write our code in better way
+   - how we can optimize our app
+   - how we can make our app performant, fast, lite weight so that it can load fast
+   - SRP--> Single Resposibility Principle
+   - Modularity
+   - what is hook at the end of the day?
+   - why we should build hook?
+   - custom Hooks and best practices
+   - creating a custom hook in RestaurantMenu Componenent "useReastaurantMenu()"
+   - useReastaurantMenu.js file for custom hook under utils folder 
+   - useReastaurantMenu() take restId as an argument and return the restInfo
+   - creating one more custom hook "useOnlineStatus()" custom hook to check user is online
+     or offline in Body component
+   - Akshay how I can write the custom hook, how I can put my thought process in wrting
+     custom hook
+   - for custom hook make a clear understanding of what input is required and what will be 
+     the return value of that custom hook
+   - Using same "useOnlineStatus()" custom hook to show user is online or offline in Header 
+     component
+   - in our app, for whole code parcel create only one js file, app become slow
+   - Lazy Loading or Chunking or Code Splitting or Dynamic Bundling or on demand loading or 
+     dynamic import
+   - lazy()
+   - suspense component
+   - fallback 
+   - for more practice make About component as lazy loaded although About component is
+     small component
+   - in many system design interview, interviewr ask how to optimized large application
+   - how I can make application fast and performant
+
 

@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import RestaurantCard from "./RestaurantCard";
-//import resList from "../utils/mockData";
 import { SWIGGY_API_URL } from "../utils/constants";
 import Shimmer from "./Shimmer";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
+//import resList from "../utils/mockData";
 
 const Body = () => {
-  //Please do read README file for episode-05
 
   //searchInput is Local state variable - super powerful variable
   const [searchText, setSearchText] = useState(""); // useState ----> to create a state variable
@@ -51,6 +51,15 @@ const Body = () => {
       setFilteredRestaurant(allResturant);
     }
   }
+
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false)
+    return (
+      <h1>
+        Looks like you're offline!! Please check your internet connection;
+      </h1>
+    );
 
   return allResturant?.length === 0 ? <Shimmer/> : (
     <div className="body">
