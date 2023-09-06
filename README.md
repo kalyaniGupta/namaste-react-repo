@@ -167,3 +167,111 @@
    - how I can make application fast and performant
 
 
+# Episode-10 Jo dikhta hai vo bikta hai 02/09/2023 : we will deal with css
+- in this episode will see 
+  - Various way we can add css in our application 
+    - first way of wrting css in index.css
+    - second adding class in file
+    - using scss and SASS
+    - styled component "https://styled-components.com/"
+    - material UI
+    - Boostrap
+    - Ant Design
+    - Chakra UI
+  - steps to install tailwind with parcel in our project 
+    - npm install -D tailwindcss postcss
+    - npx tailwindcss init 
+    - create '.postcssrc' file
+    - Add the paths to all of your template files in your tailwind.config.js file.
+    - delete all previous css from ./src/index.css file and add the @tailwind directives for each of Tailwind’s layers
+    - add css in each component file
+    - w-56 is given by Tailwind but if i want to give dynamic css then use sequare bracket [] eg: w-[250px] h-[340px]
+    - sometime if you dont get suggestion then ctrl+spacebar you will get the suggestion
+    - use Dark mode feature in application
+    - Responsiveness sm: , lg: 
+    - advantages vs disadvantage of using tailwind 
+    - H.W. ==> Read more feature about tailwind 
+    - H.W. ==> what is styled component?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
