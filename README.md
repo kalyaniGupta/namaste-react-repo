@@ -133,7 +133,6 @@
       - how to destroy setInterval in fucntional based component
       - returning function from useEffect() hook to clear the setInterval and this function will execute at the time of component unmount
       - Async in useEffect
-
 # Episode-09 Optimising our app 01/09/2023 : will learn about custom hook and lazy loading 
 - in this episode will see
    - how we can write our code in better way
@@ -166,7 +165,6 @@
    - in many system design interview, interviewr ask how to optimized large application
    - how I can make application fast and performant
 
-
 # Episode-10 Jo dikhta hai vo bikta hai 02/09/2023 : we will deal with css
 - in this episode will see 
   - Various way we can add css in our application 
@@ -195,6 +193,51 @@
   - H.W. ==> Read more feature about tailwind 
   - H.W. ==> what is styled component?
 
+# Episode-11 Data is the new oil 06/09/2023 : we will deal with data
+  - Higher order component HOC
+    - pure function in javascript
+    - Feature: 1 ==> in swiggy application we have promoted label on food card, building same feature in our application using HOC
+  - uncontrolled vs controlled component interview question
+  - lifting state up very very imp question read from react.dev
+  - Data Layer
+  - UI Layer
+  - Feature: 2 ==>creating a feature: when we click on food card it will show all the sub section catagory/accordion with food listed (for more understanding please refer swiggy application)
+    - creating a new componenet "RestaurantCategory" for accordian feature as we have in swiggy app
+    - creating a new componenet "ItemList" to display item list inside accordian
+    - modifying the component "RestaurantMenu" 
+    - adding showindex for showing and colllapsing the accordian
+    - interview question accordian and its show & collapse feature 
+    - Feature: 3 ==> when you click on accordian to expand then it should collapse all other open accordion this is very imp feature
+    - Install React Dev tool debugger in chrome very useful component and profile two very important option to debug application in inspect window
+    - how child Component Updating Parent State very very vwery important in our application we did the same
+    - "RestaurantCategory" child component updateing the parent component "RestaurantMenu" setShowIndex state variable
+  - Prop drilling very important feature
+  - React Context very very imp feature
+  - Feature: 4 ==> Creating a "Usercontext" that will keep information of logged in user as "Default User"
+    - what is createContext?
+    - what is useContext hook in functional component
+    - how to show the logged-in user info in header component
+    - can we use the "UserContext" in multiple component ? Yes we can
+    - how to use context in class based component 
+    - both ways to use context in component
+      - functional component use "useContext" hook
+      - class component use "<UserContext.Consumer>{call back function }</UserContext.Consumer>"
+  - Feature: 5 ==> What if i want to change the "Default User" value to loggedIn user value then 
+    - how we will do this? 
+    - now we have logged in user value then how do I pass this new information of context to all the component where we used the UserContext 
+    - to pass this info I will use context.provider 
+    - suppose If i wna tto change in all application then use UserContextprovider in App.js
+    - inside <UserContext.Provider> we can wrap whole app or small portion of application as well as 
+            </UserContext.Provider>
+    - can we have a nested <UserContext.Provider> in app.js? Yes it is perfactly valid
+  - Feature: 6 ==> in Body component create a input box and on change of this input value all the userContext 
+   value should change(Live Update)
+    - pass setUserName in <UserContext.Provider> to create this feature
+    -  
+
+
+
+    
 
 
 

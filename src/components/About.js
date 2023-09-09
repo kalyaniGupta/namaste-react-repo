@@ -1,6 +1,7 @@
 
 
 import { Component } from "react";
+import UserContext from "../utils/UserContext";
 import User from "./User";
 import UserClass from "./userClass";
 
@@ -42,7 +43,16 @@ import UserClassBasicConcept from "./UserClassBasicConcept";
       <div>
         <h1>About</h1> 
         <h3>This is about us page</h3> 
-      
+        <div>
+          LoggedIn User 
+          {/* Access context in class based component */}
+          <UserContext.Consumer>
+            {/* inside this there will be callback function which will have the access to userContext data */} 
+            {({ loggedInUser }) => (
+              <h1 className="text-xl font-bold">{loggedInUser}</h1>
+            )}
+          </UserContext.Consumer>
+       </div>
         {/* pass props to UserClassBasicConcept Component */}
         {/* <UserClassBasicConcept name={"First (Class component)"} location={"Pune (class component)"}/>
         <UserClassBasicConcept name={"Second (Class component)"} location={"Deharadun (class component)"}/> */}

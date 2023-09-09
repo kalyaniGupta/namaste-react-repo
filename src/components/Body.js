@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromtedLabel } from "./RestaurantCard";
 import { SWIGGY_API_URL } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 //import resList from "../utils/mockData";
 
@@ -18,6 +19,8 @@ const Body = () => {
 
   // episode 6 live-course changes for filtered list, shimmer, and early return
   const [filteredResturant, setFilteredRestaurant] = useState([]);
+
+  const RestaurantCardPromoted = withPromtedLabel(RestaurantCard);
 
   useEffect(() => {
     console.log("useEffect");
@@ -51,6 +54,8 @@ const Body = () => {
       setFilteredRestaurant(allResturant);
     }
   }
+
+  const { loggedInUser, setUserName } = useContext(UserContext);
 
   const onlineStatus = useOnlineStatus();
 
@@ -89,7 +94,7 @@ const Body = () => {
             Search
           </button>
         </div>
-
+        {/* Top Rated Restaurant */}
         <div className="search m-4 p-4 flex items-center">
           <button
             className="px-4 py-2 bg-gray-100 rounded-lg"
@@ -104,12 +109,28 @@ const Body = () => {
             Top Rated Restaurants
           </button>
         </div>
+          {/* Live Update loggedIn user */}
+        <div className="search m-4 p-4 flex items-center">
+          <label className="p-1">Live Update UserName : </label>
+          <input
+            className="border border-solid border-black p-1"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          />
+        </div>
+
       </div>
 
       <div className="flex flex-wrap">
         {filteredResturant?.map((restaurant) => (
           <Link key={restaurant.info.id} to={"/restaurants/"+restaurant.info.id}>
-            <RestaurantCard resData={restaurant}  /> 
+            {/* <RestaurantCard resData={restaurant}  />  */}
+            {/* if restaurant promoted is true then show promoted label on top of card else show normal card */}
+            {restaurant?.info.promoted ? (
+              <RestaurantCardPromoted resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+            )}
           </Link>      
         ))}
       </div>
